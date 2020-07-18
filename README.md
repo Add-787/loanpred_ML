@@ -65,6 +65,8 @@ sns.countplot(y='Loan_Amount_Term',hue='Loan_Status',data=df_train)
 
 
 # Import label encoder to encode columns containing strings with numerical values.
+These are transformers that are not intended to be used on features, only on supervised learning targets.
+
 from sklearn import preprocessing
 from sklearn.preprocessing import LabelEncoder
 
