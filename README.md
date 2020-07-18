@@ -45,17 +45,25 @@ df_train['Credit_History'].fillna(df_train['Credit_History'].mode()[0], inplace=
 # Replace missing value of Self_Employed with more frequent category
 df_train['Self_Employed'].fillna('No',inplace=True)
 
-#Importing seaborn library for graph visualizations
+# Importing seaborn library for graph visualizations
 import seaborn as sns
 %matplotlib inline
 
-#Analysing the independent variables with the target variables
+# Analysing the independent variables with the target variables
 sns.countplot(y='Gender',hue='Loan_Status',data=df_train)
 
 sns.countplot(y='Married',hue='Loan_Status',data=df_train)
 
+sns.countplot(y='Self_Employed',hue='Loan_Status',data=df_train)
 
-#Import label encoder to encode columns containing strings with numerical values.
+sns.countplot(y='Credit_History',hue='Loan_Status',data=df_train)
+
+sns.countplot(y='Property_Area',hue='Loan_Status',data=df_train)
+
+sns.countplot(y='Loan_Amount_Term',hue='Loan_Status',data=df_train)
+
+
+# Import label encoder to encode columns containing strings with numerical values.
 from sklearn import preprocessing
 from sklearn.preprocessing import LabelEncoder
 
@@ -66,19 +74,19 @@ for var in cat:
     df_train[var]=le.fit_transform(df_train[var].astype('str'))
 df_train.dtypes
 
-#Importing Libraries to build the logistic regression model.
+# Importing Libraries to build the logistic regression model.
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import f1_score
 from sklearn.linear_model import LogisticRegression
 
-#Obtaining the training and test variables via train_test_split function
+# Obtaining the training and test variables via train_test_split function
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.20, random_state=0)
 
-#Building the model
+# Building the model
 model = LogisticRegression()
 model.fit(X_train, y_train)
 
-#Used to get the accuracy of our model, our logistic regression model gives around 89% accuracy. As shown in the python notebook.
+# Used to get the accuracy of our model, our logistic regression model gives around 89% accuracy. As shown in the python notebook.
 ypred = model.predict(X_test)
 print(ypred)
 
