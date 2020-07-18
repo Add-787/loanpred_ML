@@ -5,36 +5,36 @@ Assignment during Online Internship with DLithe www.dlithe.com
 Project Statement
 The idea behind this project is to build a model that will classify whether a loan will be granted to a customer or not. It is based on the user’s marital status, education, number of dependents,employments, credit history,loan amount, gender etc.
 
-Approach
+# Approach
 I have used logistic regression to predict the loan status of the applicant.
 
-Algorithm used
+# Algorithm used
 Logistic regression is basically a supervised classification algorithm. In a classification problem, the target variable(or output), y, can take only discrete values for given set of features(or inputs), X.
 
 
 
 The Program
 
-#Importing the libraries
+# Importing the libraries
 import pandas as pd
 import numpy as np
 
-#Displaying dataset
+# Displaying dataset
 df_train=pd.read_csv('train.csv')
 df_train
 
-#Find the no.of missing values
+# Find the no.of missing values
 total = df_train.isnull().sum().sort_values(ascending=False)
 total
 
 
-#Imputing Missing values with mean for continuous variable
+# Imputing Missing values with mean for continuous variable
 df_train['LoanAmount'].fillna(df_train['LoanAmount'].mean(), inplace=True)
 df_train['Loan_Amount_Term'].fillna(df_train['Loan_Amount_Term'].mean(), inplace=True)
 df_train['ApplicantIncome'].fillna(df_train['ApplicantIncome'].mean(), inplace=True)
 df_train['CoapplicantIncome'].fillna(df_train['CoapplicantIncome'].mean(), inplace=True)
 
-#Imputing Missing values with mode for categorical variables
+# Imputing Missing values with mode for categorical variables
 df_train['Gender'].fillna(df_train['Gender'].mode()[0], inplace=True)
 df_train['Married'].fillna(df_train['Married'].mode()[0], inplace=True)
 df_train['Dependents'].fillna(df_train['Dependents'].mode()[0], inplace=True)
