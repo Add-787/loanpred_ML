@@ -81,6 +81,7 @@ from sklearn.metrics import f1_score
 from sklearn.linear_model import LogisticRegression
 
 # Obtaining the training and test variables via train_test_split function
+train_test_split is a function in Sklearn model selection for splitting data arrays into two subsets: for training data and for testing data. With this function, you don't need to divide the dataset manually.
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.20, random_state=0)
 
 # Building the model
